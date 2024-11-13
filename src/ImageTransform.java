@@ -7,7 +7,6 @@ import edu.macalester.graphics.Image.PixelFormat;
 public class ImageTransform {
 
     public static Image lighten(Image srcImage) {
-        // TODO: Task 1
 
         float[] pixels = srcImage.toFloatArray(PixelFormat.RGB);
         for (int i = 0; i < pixels.length; i++){ //c style loop (sets index to 0, advances through the array until it reaches the length of the array)
@@ -20,7 +19,6 @@ public class ImageTransform {
 
 
     public static Image greenShift(Image srcImage) {
-        // TODO: Task 2
         float[] pixels = srcImage.toFloatArray(PixelFormat.RGB);
         for (int i = 1; i < pixels.length; i+=3){ 
             pixels[i] += 0.25;
@@ -29,7 +27,6 @@ public class ImageTransform {
 
         return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
 
-        //throw new UnsupportedOperationException("Method not yet defined");
     }
 
     public static Image invert(Image srcImage) {

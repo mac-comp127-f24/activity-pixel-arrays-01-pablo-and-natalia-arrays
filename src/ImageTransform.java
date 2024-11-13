@@ -2,21 +2,36 @@ import java.util.Scanner;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Image;
+import edu.macalester.graphics.Image.PixelFormat;
 
 public class ImageTransform {
 
     public static Image lighten(Image srcImage) {
         // TODO: Task 1
 
-        throw new UnsupportedOperationException("Method not yet defined");
+        float[] pixels = srcImage.toFloatArray(PixelFormat.RGB);
+        for (int i = 0; i < pixels.length; i++){ //c style loop (sets index to 0, advances through the array until it reaches the length of the array)
+            pixels[i] *= 1.5;
+
+        }
+
+        return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
     }
 
 
-    public static Image greenShift(Image srcImage) {
-        // TODO: Task 2
+    // public static Image greenShift(Image srcImage) {
+    //     // TODO: Task 2
+    //     float[] pixels = srcImage.toFloatArray(PixelFormat.RGB);
+    //     for (int i = 0; i < pixels.length; i+3){ 
+            
+    //         pixels[i] *= ;
 
-        throw new UnsupportedOperationException("Method not yet defined");
-    }
+    //     }
+
+    //     return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
+
+    //     throw new UnsupportedOperationException("Method not yet defined");
+    // }
 
     public static Image invert(Image srcImage) {
         // TODO: Task 3
@@ -25,7 +40,7 @@ public class ImageTransform {
     }
 
     public static void main(String[] args) {
-        Image srcImage = new Image("mscs-shield.png");
+        Image srcImage = new Image("mscs-shield.png"); //Image
     
         Scanner scan = new Scanner(System.in);
         System.out.println("How would you like to transform your image?");
@@ -39,7 +54,7 @@ public class ImageTransform {
         Image transformed = switch(choice) {
             default -> srcImage; // If no matching choice, display original image
             case 1 -> lighten(srcImage);
-            case 2 -> greenShift(srcImage);
+            //case 2 -> greenShift(srcImage);
             case 3 -> invert(srcImage);
         };
 

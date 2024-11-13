@@ -19,19 +19,18 @@ public class ImageTransform {
     }
 
 
-    // public static Image greenShift(Image srcImage) {
-    //     // TODO: Task 2
-    //     float[] pixels = srcImage.toFloatArray(PixelFormat.RGB);
-    //     for (int i = 0; i < pixels.length; i+3){ 
-            
-    //         pixels[i] *= ;
+    public static Image greenShift(Image srcImage) {
+        // TODO: Task 2
+        float[] pixels = srcImage.toFloatArray(PixelFormat.RGB);
+        for (int i = 1; i < pixels.length; i+=3){ 
+            pixels[i] += 0.25;
 
-    //     }
+        }
 
-    //     return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
+        return new Image((int) srcImage.getWidth(), (int) srcImage.getHeight(), pixels, PixelFormat.RGB);
 
-    //     throw new UnsupportedOperationException("Method not yet defined");
-    // }
+        //throw new UnsupportedOperationException("Method not yet defined");
+    }
 
     public static Image invert(Image srcImage) {
         // TODO: Task 3
@@ -54,7 +53,7 @@ public class ImageTransform {
         Image transformed = switch(choice) {
             default -> srcImage; // If no matching choice, display original image
             case 1 -> lighten(srcImage);
-            //case 2 -> greenShift(srcImage);
+            case 2 -> greenShift(srcImage);
             case 3 -> invert(srcImage);
         };
 
